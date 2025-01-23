@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="main">
+      <header>
+        <img
+          class="logo"
+          src="./assets/images/donezo-high-resolution-logo__1_-removebg.png"
+          alt="Donezo Logo"
+        />
+        <div class="input-container">
+          <input type="text" id="input-search" placeholder="Search tasks..." />
+          <button type="button" id="filter-btn">
+            <i class="ri-filter-3-line"></i>
+          </button>
+        </div>
+        <div class="container">
+          <button type="button" id="theme-toggle" aria-label="Toggle theme">
+            <i class="ri-sun-line"></i>
+          </button>
+          <button
+            type="button"
+            aria-label="GitHub Profile"
+            onclick="window.open('https://github.com/yourusername')"
+          >
+            <i class="ri-github-fill"></i>
+          </button>
+          <button
+            type="button"
+            aria-label="LinkedIn Profile"
+            onclick="window.open('https://linkedin.com/in/yourusername')"
+          >
+            <i class="ri-linkedin-fill"></i>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <div class="sidebar">
+          <button type="button" id="add-task-btn" aria-label="Add new task">
+            <i class="ri-add-large-line"></i>
+          </button>
+        </div>
+        <div id="task-list" role="list" aria-label="Task list"></div>
+      </main>
+
+      <div
+        class="modal-overlay"
+        id="create-task-modal"
+        role="dialog"
+        aria-modal="true"
+      >
+        <form id="task-form" class="task-form">
+          <h2>Create New Task</h2>
+          <label for="title">Title</label>
+          <input
+            type="text"
+            id="title"
+            required
+            minlength="3"
+            maxlength="100"
+          />
+
+          <label for="description">Description</label>
+          <textarea id="description" rows="3"></textarea>
+
+          <label for="due-date">Due Date</label>
+          <input type="date" id="due-date" required />
+
+          <label for="status">Status</label>
+          <select id="status" required>
+            <option value="todo">To Do</option>
+            <option value="progress">In Progress</option>
+          </select>
+
+          <label for="priority">Priority</label>
+          <select id="priority" required>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+
+          <div class="form-actions">
+            <button type="submit">Save Task</button>
+            <button type="button" id="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-overlay" id="update-task-modal">
+        <form id="update-task-form" class="task-form">
+          <h2>Update Task</h2>
+
+          <label for="update-title">Title</label>
+          <input type="text" id="update-title" required />
+
+          <label for="update-description">Description</label>
+          <textarea id="update-description" rows="3"></textarea>
+
+          <label for="update-due-date">Due Date</label>
+          <input type="date" id="update-due-date" required />
+
+          <label for="update-status">Status</label>
+          <select id="update-status" required>
+            <option value="todo">To Do</option>
+            <option value="progress">In Progress</option>
+          </select>
+
+          <label for="update-priority">Priority</label>
+          <select id="update-priority" required>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+
+          <div class="form-actions">
+            <button type="submit">Update Task</button>
+            <button type="button" class="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <footer>
+        <p>
+          &copy; 2025 DONEZO. Built by
+          <a href="https://www.linkedin.com/in/dev-areen/">Areen</a> &
+          <a href="https://www.linkedin.com/in/piyush-dhiman-a7900a32a/"
+            >Piyush</a
+          >.
+        </p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
