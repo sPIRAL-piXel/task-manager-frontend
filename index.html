@@ -28,18 +28,10 @@
           <button type="button" id="theme-toggle" aria-label="Toggle theme">
             <i class="ri-sun-line"></i>
           </button>
-          <button
-            type="button"
-            aria-label="GitHub Profile"
-            onclick="window.open('https://github.com/yourusername')"
-          >
+          <button type="button" aria-label="GitHub Profile">
             <i class="ri-github-fill"></i>
           </button>
-          <button
-            type="button"
-            aria-label="LinkedIn Profile"
-            onclick="window.open('https://linkedin.com/in/yourusername')"
-          >
+          <button type="button" aria-label="LinkedIn Profile">
             <i class="ri-linkedin-fill"></i>
           </button>
         </div>
@@ -55,72 +47,92 @@
       </main>
 
       <div
-        class="modal-overlay"
         id="create-task-modal"
+        class="modal-overlay"
         role="dialog"
-        aria-modal="true"
+        aria-labelledby="create-task-modal-title"
       >
-        <form id="task-form" class="task-form">
-          <h2>Create New Task</h2>
+        <form
+          id="task-form"
+          class="task-form"
+          aria-labelledby="create-task-modal-title"
+        >
+          <h2 id="create-task-modal-title">Create Task</h2>
+
           <label for="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            required
-            minlength="3"
-            maxlength="100"
-          />
+          <input type="text" id="title" name="title" required />
 
           <label for="description">Description</label>
-          <textarea id="description" rows="3"></textarea>
+          <textarea id="description" name="description" required></textarea>
 
-          <label for="due-date">Due Date</label>
-          <input type="date" id="due-date" required />
+          <label for="dueDate">Due Date</label>
+          <input type="datetime-local" id="dueDate" name="dueDate" required />
 
           <label for="status">Status</label>
-          <select id="status" required>
-            <option value="todo">To Do</option>
-            <option value="progress">In Progress</option>
+          <select id="status" name="status" required>
+            <option value="TO_DO">To Do</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="COMPLETED">Completed</option>
           </select>
 
           <label for="priority">Priority</label>
-          <select id="priority" required>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+          <select id="priority" name="priority" required>
+            <option value="LOW">Low</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="HIGH">High</option>
           </select>
 
           <div class="form-actions">
-            <button type="submit">Save Task</button>
-            <button type="button" id="cancel-btn">Cancel</button>
+            <button type="submit">Create Task</button>
+            <button type="button" class="cancel-btn">Cancel</button>
           </div>
         </form>
       </div>
 
-      <div class="modal-overlay" id="update-task-modal">
-        <form id="update-task-form" class="task-form">
-          <h2>Update Task</h2>
+      <div
+        id="update-task-modal"
+        class="modal-overlay"
+        role="dialog"
+        aria-labelledby="update-task-modal-title"
+      >
+        <form
+          id="update-task-form"
+          class="task-form"
+          aria-labelledby="update-task-modal-title"
+        >
+          <h2 id="update-task-modal-title">Update Task</h2>
 
           <label for="update-title">Title</label>
-          <input type="text" id="update-title" required />
+          <input type="text" id="update-title" name="title" required />
 
           <label for="update-description">Description</label>
-          <textarea id="update-description" rows="3"></textarea>
+          <textarea
+            id="update-description"
+            name="description"
+            rows="3"
+            required
+          ></textarea>
 
           <label for="update-due-date">Due Date</label>
-          <input type="date" id="update-due-date" required />
+          <input
+            type="datetime-local"
+            id="update-due-date"
+            name="dueDate"
+            required
+          />
 
           <label for="update-status">Status</label>
-          <select id="update-status" required>
-            <option value="todo">To Do</option>
-            <option value="progress">In Progress</option>
+          <select id="update-status" name="status" required>
+            <option value="TO_DO">To Do</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="COMPLETED">Completed</option>
           </select>
 
           <label for="update-priority">Priority</label>
-          <select id="update-priority" required>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+          <select id="update-priority" name="priority" required>
+            <option value="LOW">Low</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="HIGH">High</option>
           </select>
 
           <div class="form-actions">
