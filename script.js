@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const updateThemeIcon = (theme) => {
     const themeIcon = document.querySelector("#theme-toggle i");
     if (theme === "light") {
-      themeIcon.classList.remove("ri-sun-line");
-      themeIcon.classList.add("ri-moon-line");
+      themeIcon.classList.add("ri-sun-line");
+      themeIcon.classList.remove("ri-moon-line");
     } else {
       themeIcon.classList.remove("ri-moon-line");
       themeIcon.classList.add("ri-sun-line");
