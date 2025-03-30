@@ -1,6 +1,5 @@
 /* ========== Base Styles & Variables ========== */
 :root {
-  /* Color palette - Light theme */
   --bg-primary: #c3cfe2;
   --bg-secondary: #a1c4fd;
   --text-primary: #1a1a2e;
@@ -15,8 +14,6 @@
   --warning: #ffd166;
   --danger: #ef476f;
   --shadow-color: rgba(0, 0, 0, 0.2);
-
-  /* Animation timing */
   --transition-fast: 150ms;
   --transition-normal: 200ms;
   --bezier-snappy: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -27,8 +24,6 @@
   --bg-secondary: #16213e;
   --text-primary: #e6e6ff;
   --text-secondary: #a7a7d8;
-  --accent-primary: #ff5252;
-  --accent-secondary: #7b2cbf;
   --border-color: #4a4a82;
   --input-bg: #2c2c54;
   --card-bg: #242444;
@@ -158,6 +153,10 @@ header button {
   justify-content: center;
   transition: all var(--transition-fast) var(--bezier-snappy);
 }
+header button a {
+  text-decoration: none;
+  color: white;
+}
 
 header button:hover {
   transform: translateY(-3px);
@@ -219,12 +218,13 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding-top: 16px;
 }
 
 #add-task-btn {
-  width: 48px;
-  height: 48px;
+  width: 58px;
+  height: 58px;
   background-color: var(--accent-secondary);
   color: white;
   border: 3px solid var(--border-color);
@@ -495,7 +495,7 @@ main {
   transform: scale(0.95);
   opacity: 0;
   transition: transform var(--transition-fast) var(--bezier-snappy),
-    opacity var(--transition-fast) var(--bezier-snappy);
+    opacity var(--transition-fast) var (--bezier-snappy);
 }
 
 .filter-dropdown.active {
@@ -568,7 +568,7 @@ main {
   grid-column: 1 / -1;
   text-align: center;
   padding: 40px;
-  color: var(--text-secondary);
+  color: var (--text-secondary);
   font-size: 22px;
   border: 3px dashed var(--border-color);
   background-color: var(--card-bg);
@@ -792,4 +792,77 @@ button.is-loading::after {
   border-radius: 50%;
   border-top-color: white;
   animation: spin 1s ease-in-out infinite;
+}
+
+/* LinkedIn Dropdown */
+.linkedin-dropdown {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 8px); /* Changed from right to left positioning */
+  background-color: var(--modal-bg);
+  border: 2px solid var(--border-color);
+  z-index: 10000;
+  padding: 8px;
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+  transform: translateX(-10px); /* Changed from translateY to translateX */
+  opacity: 0;
+  visibility: hidden;
+  transition: transform var(--transition-normal) var (--bezier-snappy),
+    opacity var (--transition-normal) var (--bezier-snappy);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.linkedin-dropdown.show {
+  transform: translateX(0); /* Changed from translateY to translateX */
+  opacity: 1;
+  visibility: visible;
+}
+
+.linkedin-option {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all var(--transition-fast) var (--bezier-snappy);
+  font-family: "VT323", monospace;
+  font-size: 16px;
+  border: 2px solid var(--border-color);
+  background: var(--card-bg);
+  min-width: 120px;
+  text-align: center;
+}
+
+.linkedin-option:hover {
+  background-color: var(--accent-secondary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 0 var(--border-color);
+}
+
+#openLinks {
+  position: relative;
+}
+
+/* Remove display: none to fix flickering */
+#openLinks:focus .linkedin-dropdown,
+#openLinks:active .linkedin-dropdown,
+.linkedin-dropdown.show {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Add responsive styles for dropdown */
+@media (max-width: 768px) {
+  .linkedin-dropdown {
+    left: auto; /* Reset left positioning */
+    right: 0; /* Fallback to bottom positioning on mobile */
+    top: calc(100% + 8px);
+    transform: translateY(-10px); /* Reset to vertical translation on mobile */
+  }
+
+  .linkedin-dropdown.show {
+    transform: translateY(0); /* Reset to vertical translation on mobile */
+  }
 }

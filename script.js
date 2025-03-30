@@ -286,5 +286,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     showError("User not found. Please log in.");
   }
 
+  const openLinks = () => {
+    const dropdown = document.querySelector(".linkedin-dropdown");
+    dropdown.classList.toggle("show");
+  };
+
+  document.getElementById("openLinks").addEventListener("click", (e) => {
+    e.stopPropagation();
+    openLinks();
+  });
+
+  document.querySelectorAll(".linkedin-option").forEach((option) => {
+    option.addEventListener("click", (e) => {
+      e.stopPropagation();
+      window.open(e.target.dataset.url, "_blank");
+      document.querySelector(".linkedin-dropdown").classList.remove("show");
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("#openLinks")) {
+      document.querySelector(".linkedin-dropdown").classList.remove("show");
+    }
+  });
+
   initializeTheme();
 });
